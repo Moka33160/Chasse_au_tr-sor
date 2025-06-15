@@ -2,7 +2,9 @@
  * Stock l'UID du joueur
  */
 let UIDjoueur;
-
+/**
+ * declaration des structures permettant l'affichage
+ */
 let alerte = document.getElementById("alerte");
 let sucess = document.getElementById("sucess");
 let Scontainer = document.getElementById("sucess-container");
@@ -20,6 +22,9 @@ const tousPrendre = document.getElementById("tousPrendre");
 const magicNumber = document.getElementById("ValiderMagic");
 const posToutesPièces = document.getElementById("triche");
 
+/**
+ * Permet de reinitialiser les structures d'affichages
+ */
 let res = () => {
   alerte.textContent = "";
   sucess.textContent = "";
@@ -29,6 +34,9 @@ let res = () => {
   Scontainer.style.display = "none";
 };
 
+/**
+ * Tableau qui peremttra de stocker les coordonnées de toutes les pièces sur le plateau. (me sert dans les fonctionalités bonus que j'ai implémenter)
+ */
 let piecesOr = [];
 /**
  * permet de charger le plateau de jeu.
@@ -151,7 +159,7 @@ const listJoueur = () => {
 listJoueur();
 
 /**
- * Permet au joueur de selectionner son equipe.
+ * Permet au joueur de selectionner son equipe suivant son UID.
  */
 
 const validerEquipe = () => {
@@ -195,7 +203,7 @@ const validerEquipe = () => {
 validerEquipe();
 
 /**
- * Gestion de sauvegarde de l' UID
+ * Gestion de sauvegarde de l'UID par les cookies
  * @param {*} uid
  */
 
@@ -220,6 +228,9 @@ if (!UIDjoueur) {
   }
 }
 
+/**
+ * Permet d'afficher notre temps d'attente après avoir fait une action.
+ */
 const tempAttente = () => {
   temps.innerHTML = "";
   res();
@@ -246,6 +257,9 @@ const tempAttente = () => {
     });
 };
 
+/**
+ * Permet de chercher une pièce sur le plateau
+ */
 let chercherPiece = () => {
   chercher.addEventListener("click", () => {
     res();
@@ -307,6 +321,9 @@ let chercherPiece = () => {
 
 chercherPiece();
 
+/**
+ * Permet de prendre une pièce sur le plateau
+ */
 let prendrePiece = () => {
   prendre.addEventListener("click", () => {
     if (!UIDjoueur) {
@@ -388,7 +405,9 @@ let prendrePiece = () => {
 };
 
 prendrePiece();
-
+/**
+ * Permet de payer un espion 
+ */
 const payerEspion = () => {
   espion.addEventListener("click", () => {
     if (!UIDjoueur) {
@@ -432,6 +451,9 @@ const payerEspion = () => {
 };
 payerEspion();
 
+/**
+ * Fonctionalité bonus qui permet d eprendre plusieurs pièce sur le plateau
+ */
 const PrendrenbPieceMaximum = () => {
   tousPrendre.addEventListener("click", async () => {
     if (!UIDjoueur) {
@@ -496,7 +518,9 @@ const PrendrenbPieceMaximum = () => {
 };
 
 PrendrenbPieceMaximum();
-
+/**
+ * Permet de voler des pièces au autres équipes
+ */
 const volerPiece = () => {
   voler.addEventListener("click", () => {
     if (!UIDjoueur) {
@@ -548,7 +572,9 @@ const volerPiece = () => {
   });
 };
 volerPiece();
-
+/**
+ * Permet de valider la magic number
+ */
 const Mnumber = () => {
   magicNumber.addEventListener("click", () => {
     if (!UIDjoueur) {
@@ -597,29 +623,58 @@ const Mnumber = () => {
 };
 Mnumber();
 
+/**
+ * afficher les coordonnées des pièces d'or
+ * @returns
+ */
+let afficherCoordonnéesDesPiècesDor = () => {
+  posToutesPièces.addEventListener("click", () => {
+      if (!UIDjoueur) {
+          alert("rentrer un uid");
+          return;
+      }
+      
+      if (piecesOr.length === 0) {
+          sucess.textContent = "Plus de pièce disponible sur le plateau.";
+          sucess.style.display = "block";
+          Scontainer.style.display = "block";
+          return;
+      }
+      let od = document.getElementById("tabPieceor");
+      od.innerHTML = "";
+     
+      let d = document.createElement("div");
+      d.innerHTML = `
+      <div class="table-container">
+          <h3>Coordonnées des pièces</h3>
+          <table class="table table-warning table-striped">
+              <thead>
+                  <tr>
+                      <th scope="col">Nb</th>
+                      <th scope="col">Ligne</th>
+                      <th scope="col">Colonne</th>
+                  </tr>
+              </thead>
+              <tbody id="tbo"></tbody>
+          </table>
+      </div>
+  `;
+      od.appendChild(d);
+      let tbo = document.getElementById("tbo");
+      let cpt = 1;
+      
+      // Créer une ligne pour chaque pièce
+      for (let piece of piecesOr) {
+          let row = document.createElement("tr");
+          row.innerHTML = `
+              <th scope="row">${cpt}</th>
+              <td>${piece.ligne}</td>
+              <td>${piece.colonne}</td>
+          `;
+          tbo.appendChild(row); 
+          cpt++;
+      }
+  });
+};
 
-let afficherCoordonnéesDesPiècesDor =() =>{
-
-  if (!UIDjoueur) {
-    alert("rentrer un uid");
-    return;
-  }
-
-  posToutesPièces.addEventListener("click" , () =>{
-    if(piecesOr.length === 0){
-      sucess.textContent = "Plus de pièce disponible sur le plateau.";
-      sucess.style.display = "block";
-      Scontainer.style.display = "block";
-      return; 
-    }
-
-    let cpt = 1;
-    for(let d of piecesOr){
-      sucess.textContent =  cpt ,  " :  ( "   , d.ligne ,  d.colonne ,  " )"  ;
-      sucess.style.display = "block";
-      Scontainer.style.display = "block";
-      cpt ++;
-    }
-  })
-}
-afficherCoordonnéesDesPiècesDor()
+afficherCoordonnéesDesPiècesDor();

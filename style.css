@@ -29,16 +29,22 @@ body {
   min-height: 100vh;
 }
 
-
 .actions-zone {
   grid-area: header;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center; /* Centre verticalement */
   gap: 10px;
   padding: 15px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.actions-zone > * {
+  flex: 1 1 auto; /* Grandit, rétrécit, taille automatique */
+  text-align: center; /* Centre le contenu */
 }
 
 
@@ -72,6 +78,15 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+}
+
+#magic{
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
 }
 
 
