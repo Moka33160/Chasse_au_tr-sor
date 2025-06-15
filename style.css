@@ -1,0 +1,167 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Pirata One', cursive;
+  margin: 0;
+  padding: 20px;
+  background-image: url('wallpaperflare.com_wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.container-fluid {
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "sidebar plateau info"
+    "footer footer footer";
+  grid-template-columns: 300px 1fr 300px;
+  grid-template-rows: auto 1fr auto;
+  gap: 20px;
+  min-height: 100vh;
+}
+
+
+.actions-zone {
+  grid-area: header;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.sidebar-left {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.plateau-zone {
+  grid-area: plateau;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.sidebar-right {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.footer-zone {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.card-custom {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #dee2e6;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+
+.table-container {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.table-container h3 {
+  margin: 0;
+  padding: 15px;
+  background: #007bff;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+
+#stockjoueurs .table {
+  font-size: 0.8rem;
+}
+
+#stockjoueurs .table th,
+#stockjoueurs .table td {
+  padding: 0.4rem;
+  vertical-align: middle;
+}
+
+#stockjoueurs {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+
+.alert {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#sucess-container {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+#alert-container {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+
+#Equipe {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#temps {
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  min-width: 200px;
+}
+

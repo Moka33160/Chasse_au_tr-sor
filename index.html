@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chasse au tresor</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="actions-zone">
+        <button id="Prendre" class="btn btn-primary perso">Prendre pièce</button>
+        <button id="chercher" class="btn btn-primary perso">Chercher pièce</button>
+        <button id="tousPrendre" class="btn btn-danger perso">Prendre plusieurs</button>
+        <button id="voler" class="btn btn-danger perso">Voler pièce</button>
+        <button id="espion" class="btn btn-danger perso">Payer Espion</button>
+        <button id="Verifier" class="btn btn-success perso">Vérifier QR code</button>
+        <button id="triche" class="btn btn-warning perso">position de toutes les pièces</button>
+       
+      </div>
+
+      <div class="sidebar-left">
+        <div class="card-custom">
+          <h5>Coordonnées</h5>
+          <div class="form-group">
+            <label for="ligne">Ligne (0-99)</label>
+            <input
+              type="number"
+              min="0"
+              max="99"
+              class="form-control"
+              id="ligne"
+              placeholder="ligne..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="colonne">Colonne (0-99)</label>
+            <input
+              type="number"
+              min="0"
+              max="99"
+              class="form-control"
+              id="colonne"
+              placeholder="colonne..."
+            />
+          </div>
+        </div>
+
+        <div class="table-container">
+          <h3>Liste des joueurs</h3>
+          <div id="stockjoueurs">
+            <table class="table table-success table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Groupe</th>
+                  <th scope="col">Banni</th>
+                  <th scope="col">Pixels modifiés</th>
+                  <th scope="col">Dernier pixel</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="plateau-zone">
+        <div class="plateau">
+          <div id="chargementPlateau"></div>
+        </div>
+      </div>
+
+      <div class="sidebar-right">
+        <div class="table-container">
+          <h3>Pièces en banque</h3>
+          <table class="table table-primary table-striped-columns">
+            <thead></thead>
+            <tbody id="bodyTab"></tbody>
+          </table>
+        </div>
+
+        <div
+          id="sucess-container"
+          class="alert alert-success p-2"
+          role="alert"
+          style="display: none"
+        >
+          <h4 class="alert-heading"><u>Résultat :</u></h4>
+          <p id="sucess" style="display: none"></p>
+          <hr />
+        </div>
+
+        <div
+          id="alert-container"
+          class="alert alert-danger align-items-center p-1"
+          role="alert"
+          style="display: none"
+        >
+          <span style="font-size: 2em; margin-right: 10px">💀</span>
+          <div id="alerte" style="display: none"></div>
+        </div>
+
+        <p id="reponseUid"></p>
+      </div>
+
+      <div class="footer-zone">
+        <div id="Equipe">
+          <button id="Valider" class="btn btn-success perso">
+            Valider mon équipe
+          </button>
+          <input
+            type="text"
+            class="form-control"
+            id="uid"
+            placeholder="Entrez votre UID"
+            style="max-width: 200px"
+          />
+        </div>
+
+        <div id="magic">
+          <button id="ValiderMagic" class="btn btn-success perso">
+            Vérifiez magic number
+          </button>
+          <input
+            type="text"
+            class="form-control"
+            id="numberMagic"
+            placeholder="Entrez le magic number..."
+            style="max-width: 200px"
+          />
+        </div>
+
+        <div id="temps"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
