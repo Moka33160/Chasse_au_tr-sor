@@ -261,8 +261,8 @@ MIT License - Utilisation libre pour projets personnels et commerciaux
 
 ## 👨‍💻 Auteur
 
-**[Votre Nom]**
-- 🐙 **GitHub** : [@votre-username](https://github.com/votre-username)
+**[Mathis Gesson]**
+- 🐙 **GitHub** : [Mathis Gesson](https://github.com/Moka33160/)
 
 ## 🙏 Remerciements
 
